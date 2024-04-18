@@ -1,0 +1,33 @@
+/* Navbar.css */
+.underline-animation {
+    position: relative;
+    overflow: hidden; /* Ensures the pseudo-element is contained within the link's boundaries */
+  }
+  
+  .underline-animation::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width .3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .underline-animation:hover::after {
+    width: 100%;
+  }
+  /* Ensuring navbar retains its full width but height transitions are smooth */
+.navbar {
+  transition: height 0.3s ease; /* Smooth transition for height changes */
+}
+
+.navbar-tall {
+  height: 100px; /* Set a taller height */
+}
+
+.navbar-short {
+  height: 60px; /* Set a shorter height */
+}
