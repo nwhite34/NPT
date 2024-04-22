@@ -3,21 +3,15 @@ import './Navbar.css';
 import logo from '../NPT4.png'; // Ensure the path to your logo is correct
 
 const Navbar = () => {
-  // State to manage the navbar height on scroll
   const [isShrunk, setShrunk] = useState(false);
-  // State to manage the sidenav visibility
   const [isSidenavOpen, setSidenavOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Set navbar to shrunk state when the scroll position is more than 50 pixels
       setShrunk(window.scrollY > 50);
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up event listener
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -27,7 +21,7 @@ const Navbar = () => {
     <nav className={`bg-black text-blue-500 fixed w-full z-10 font-sans ${isShrunk ? 'p-2' : 'p-4'}`}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-xl font-sans text-custom-gold">
-          <a href="#top">
+          <a href="#home">
             <img src={logo} alt="Logo" className={`cursor-pointer ${isShrunk ? 'h-6 md:h-8' : 'h-8 md:h-10'}`} /> NPT
           </a>
         </div>

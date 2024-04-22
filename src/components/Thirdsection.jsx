@@ -5,7 +5,7 @@ import sixJpg from '../nathan.jpg'; // Adjust the relative path if needed
 
 
 
-const Thirdsection = () => {
+const Thirdsection= ({ onButtonClick }) => {
     // Array of image URLs from Unsplash, plus the local image
     const images = [
         
@@ -47,7 +47,7 @@ const Thirdsection = () => {
             Unleash Your Potential:
 
 
-                <button className="mt-1/2 m-auto ml-2 mr-2 bg-transparent border border-custom-gold py-2 px-2 rounded-full text-custom-gold hover:bg-white hover:text-black transition duration-300 cursor-pointer">
+                <button onClick={onButtonClick} className="mt-1/2 m-auto ml-2 mr-2 bg-transparent border border-custom-gold py-2 px-2 rounded-full text-custom-gold hover:bg-white hover:text-black transition duration-300 cursor-pointer">
                 Start
             </button>
             Your Transformation Today!

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MissionSection = () => {
+const MissionSection= ({ onButtonClick }) => {
   return (
     <div className="bg-black text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,7 +15,7 @@ const MissionSection = () => {
           <p className="mb-4">
             Training & addressing your diet with the correct approach adds to your life exponentially, through increasing your energy, decreasing your stress, heightening your mood, boosting long-term health, and equipping you with confidence in your everyday strength and appearance. Which is exactly why we designed The Armoury from the ground up to be the best 1-2-1 & Small Group Personal Training Studio in Milton Keynes. If you'd like to be part of a coaching environment that puts you first? Get in touch
           </p>
-          <button className="mt-8 bg-custom-gold text-black hover:bg-gold-600 font-bold py-2 px-4 rounded uppercase">
+          <button onClick={onButtonClick} className="mt-8 bg-custom-gold text-black hover:bg-gold-600 font-bold py-2 px-4 rounded uppercase">
             Book your free trial now
           </button>
         </div>
