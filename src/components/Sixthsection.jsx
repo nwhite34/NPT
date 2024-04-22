@@ -5,10 +5,10 @@ const SixthSection = () => {
     <div className="bg-black  py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans ">
         <div className="text-center mt-20">
-          <h2 className="text-3xl font-extrabold sm:text-4xl uppercase mb-20 text-white">
+          <h2 className="text-3xl  sm:text-4xl uppercase mb-20 text-white font-semibold ">
             It's time to put yourself <span className="text-custom-gold">first! </span> 
           </h2>
-          <p className="font-white font-sans">
+          <p className="font-white font-semibold  font-sans">
   We specialize in guiding young adults who are ready to elevate their fitness and forge their path to becoming stronger, more resilient individuals.
 </p>
 <p className="mb-4">
