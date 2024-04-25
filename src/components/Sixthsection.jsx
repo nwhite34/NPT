@@ -2,7 +2,7 @@ import React from 'react';
 
 const SixthSection = ({ onButtonClick }) => {
   return (
-    <div className="bg-black py-12">
+    <div className="bg-black py-12 min-h-[100vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans">
         <div className="text-center mt-20">
           <h2 className="text-3xl sm:text-4xl uppercase mb-20 text-white font-semibold">
@@ -23,8 +23,9 @@ const SixthSection = ({ onButtonClick }) => {
           <p className="mb-6">
             In just 42 days, you'll shift from feeling uncertain about your fitness future to celebrating the strong, confident habits you’ve developed and the noticeable changes in your physique and stamina.
           </p>
-          <div className="mt-6">
-            <button onClick={onButtonClick} className="text-black bg-custom-gold hover:bg-gold-600 font-bold py-2 px-4 rounded mt-20">
+          <div className="mt-20">
+            <button onClick={onButtonClick}         className="bg-white text-black py-3 px-8 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-custom-gold hover:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50">
+
               Try us out
             </button>
           </div>

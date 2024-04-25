@@ -5,45 +5,59 @@ import Secondsection from './Secondsection';
 import Thirdsection from './Thirdsection';
 import Fourthsection from './Fourthsection';
 import Fifthsection from './Fifthsection';
-import Sixthsection from './Sixthsection';  // Ensure correct naming
+import Sixthsection from './Sixthsection';
 import Seventhsection from './Seventhsection';
 import Footer from './Footer';
 
 const Homepage = () => {
-  const fourthSectionRef = useRef(null);
+  const homeRef = useRef(null);
+  const programmesRef = useRef(null);
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
 
-  const scrollToFourthSection = () => {
-    if (fourthSectionRef.current) {
-      fourthSectionRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToRef = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <div className="text-white font-bold rounded flex flex-col">
-      <Navbar />
-      <div id="home" className="full-width"> {/* Ensure full width and correct sectioning */}
+      <Navbar
+        onHomeClick={() => scrollToRef(homeRef)}
+        onProgrammesClick={() => scrollToRef(programmesRef)}
+        onAboutClick={() => scrollToRef(aboutRef)}
+        onContactClick={() => scrollToRef(contactRef)}
+      />
+        <div ref={homeRef} id="home" className="full-width">
+        <Firstsection />
+    </div>
+        <Sixthsection onButtonClick={() => scrollToRef(contactRef)} />
+
       
-        <Thirdsection onButtonClick={scrollToFourthSection}/>
-      </div>
-     < Sixthsection onButtonClick={scrollToFourthSection}/>
       <div className='bg-black w-full h-2'></div>
-      <Firstsection onButtonClick={scrollToFourthSection} />
-      <div id="programmes">
+    
+      <div ref={programmesRef} id="programmes">
         <Secondsection />
       </div>
+    
+
       <div className='bg-black w-full h-2'></div>
-  
-      <div className='bg-black w-full h-20'></div>
       <Fifthsection />
+      <div ref={aboutRef} id="about">
+        <Seventhsection />
+      </div>
       <div className='bg-black w-full h-20'></div>
-      <div id="contact" ref={fourthSectionRef}>
+      <Thirdsection onButtonClick={() => scrollToRef(contactRef)} />
+      <div className='bg-black w-full h-2'></div>
+      
+      <div ref={contactRef} id="contact">
         <Fourthsection />
       </div>
-      <div className='bg-black w-full h-2'></div>
-      <div id="about">
-        <Seventhsection onButtonClick={scrollToFourthSection}/>
-      </div>
-      <Footer />
+      <Footer
+        onHomeClick={() => scrollToRef(homeRef)}
+        onProgrammesClick={() => scrollToRef(programmesRef)}
+        onAboutClick={() => scrollToRef(aboutRef)}
+        onContactClick={() => scrollToRef(contactRef)}
+      />
     </div>
   );
 };

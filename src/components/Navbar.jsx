@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import logo from '../NPT4.png'; // Ensure the path to your logo is correct
+import logo from '../NPT4.png';
 
-const Navbar = () => {
+const Navbar = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }) => {
   const [isShrunk, setShrunk] = useState(false);
   const [isSidenavOpen, setSidenavOpen] = useState(false);
 
@@ -20,10 +20,10 @@ const Navbar = () => {
   return (
     <nav className={`bg-black text-blue-500 fixed w-full z-10 font-sans ${isShrunk ? 'p-2' : 'p-4'} `}>
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-xl font-sans text-custom-gold">
-          <a href="#home">
-            <img src={logo} alt="Logo" className={`cursor-pointer ${isShrunk ? 'h-6 md:h-8' : 'h-8 md:h-10'}`} /> NPT
-          </a>
+        <div className="text-xl font-semibold text-custom-gold ">
+          <button onClick={onHomeClick}>
+            <img src={logo} alt="Logo" className={`cursor-pointer ${isShrunk ? 'h-6 md:h-8' : 'h-8 md:h-10'} `} /> NPT
+          </button>
         </div>
         <div className="md:hidden">
           <button onClick={() => setSidenavOpen(!isSidenavOpen)} className="text-white">
@@ -33,10 +33,10 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden md:flex space-x-4">
-          <a href="#home" className="underline-animation text-custom-gold hover:text-white">HOME</a>
-          <a href="#programmes" className="underline-animation text-custom-gold hover:text-white">PROGRAMMES</a>
-          <a href="#about" className="underline-animation text-custom-gold hover:text-white">ABOUT</a>
-          <a href="#contact" className="underline-animation text-custom-gold hover:text-white">CONTACT</a>
+          <button onClick={onHomeClick} className="underline-animation text-custom-gold hover:text-white">HOME</button>
+          <button onClick={onProgrammesClick} className="underline-animation text-custom-gold hover:text-white">PROGRAMMES</button>
+          <button onClick={onAboutClick} className="underline-animation text-custom-gold hover:text-white">ABOUT</button>
+          <button onClick={onContactClick} className="underline-animation text-custom-gold hover:text-white">CONTACT</button>
         </div>
       </div>
       {isSidenavOpen && (
@@ -47,10 +47,10 @@ const Navbar = () => {
             </button>
           </div>
           <ul className="space-y-4 p-4">
-            <li><a href="#home" className="underline-animation text-custom-gold hover:text-white">HOME</a></li>
-            <li><a href="#about" className="underline-animation text-custom-gold hover:text-white">ABOUT</a></li>
-            <li><a href="#programmes" className="underline-animation text-custom-gold hover:text-white">PROGRAMMES</a></li>
-            <li><a href="#contact" className="underline-animation text-custom-gold hover:text-white">CONTACT</a></li>
+            <li><button onClick={onHomeClick} className="underline-animation text-custom-gold hover:text-white">HOME</button></li>
+            <li><button onClick={onAboutClick} className="underline-animation text-custom-gold hover:text-white">ABOUT</button></li>
+            <li><button onClick={onProgrammesClick} className="underline-animation text-custom-gold hover:text-white">PROGRAMMES</button></li>
+            <li><button onClick={onContactClick} className="underline-animation text-custom-gold hover:text-white">CONTACT</button></li>
           </ul>
         </div>
       )}

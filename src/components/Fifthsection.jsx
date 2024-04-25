@@ -47,7 +47,7 @@ const testimonials = [
 ];
 
 const StarRating = ({ rating }) => (
-  <div className="flex justify-center mt-2 mb-2 space-x-1 overflow-visible"> {/* Ensuring overflow is visible and adjusting margins */}
+  <div className="flex justify-center mt-2 mb-2 space-x-1 overflow-visible "> {/* Ensuring overflow is visible and adjusting margins */}
     {Array.from({ length: 5 }, (_, index) => (
       <svg
         key={index}
@@ -70,11 +70,11 @@ const FifthSection = () => {
   };
 
   return (
-    <div className="bg-black text-white p-8">
+    <div className="bg-black text-white p-8 min-h-[140vh]">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-semibold text-center font-sans">THE RESULTS YOU CAN <span className='text-custom-gold'> EXPECT </span></h2>
         <p className="mt-4 text-center">
-          The Armoury would be nothing without the men and women that have put their trust in us over the last 10 years...
+          NPT would be nothing without the men and women that have put their trust in us over the last 10 years...
         </p>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Increased gap for larger images */}
           {testimonials.slice(0, displayCount).map((testimonial, index) => (

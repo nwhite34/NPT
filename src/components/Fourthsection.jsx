@@ -1,6 +1,5 @@
 import React, { useState, forwardRef } from 'react';
 import emailjs from 'emailjs-com';
-import secondJpg from '../getty1.jpg';
 
 const Fourthsection = forwardRef((props, ref) => {
   // State for form fields and validation
@@ -58,18 +57,18 @@ const Fourthsection = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black" ref={ref}>
-      <img src={secondJpg} alt="Fitness" className="absolute inset-0 w-full h-full object-cover"/>
-      <div className="absolute inset-0 flex items-center justify-center w-full md:w-1/2 ml-auto p-4">
-        <div className="max-w-full md:max-w-xl bg-black bg-opacity-80 rounded-lg p-4">
-          <div className="text-left mb-6">
-            <h2 className="text-lg md:text-xl text-white mb-2">1-2-1 & SMALL GROUP</h2>
+    <div className="relative min-h-[110vh] bg-black" ref={ref}>
+      
+      <div className="absolute inset-0 flex items-center justify-center w-full md:w-1/2 m-auto p-4 ">
+        <div className="max-w-full md:max-w-xl rounded-lg p-4  bg-gray-900">
+          <div className="text-left mb-6 ">
+            <h2 className="text-lg md:text-xl text-white mb-2 ">1-2-1 & SMALL GROUP</h2>
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-custom-gold">PERSONAL TRAINING WITH NPT</h1>
             <p className="text-sm md:text-base text-white">
               The number one Personal Training Studio in NPT helping men and women to get in the best shape of their lives with our infamous 6 Week Transformation Challenge.
             </p>
           </div>
-          <div className="bg-black bg-opacity-80 rounded-lg p-4 md:p-6 text-custom-gold">
+          <div className=" bg-gray-900 rounded-lg p-4 md:p-6 text-custom-gold  ">
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="first-name" className="block text-sm font-bold mb-2">First Name *</label>

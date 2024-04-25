@@ -1,16 +1,15 @@
-//import logo from './logo.svg';
+import React from 'react';
 import './index.css';
-
-import Homepage  from './components/Homepage';
-
+import { BrowserRouter as Router } from 'react-router-dom';  // Import BrowserRouter
+import Homepage from './components/Homepage';
 
 function App() {
   return (
-    <div className="App">
-      
-        <Homepage /> 
-     
-    </div>
+    <Router>  {/* Wrap your components with Router */}
+      <div className="App">
+        <Homepage />
+      </div>
+    </Router>
   );
 }
 

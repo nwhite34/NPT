@@ -5,13 +5,12 @@ import nick2Jpg from '../new2.png'; // Adjust the relative path if needed
 
 const SecondSection = () => {
   return (
-    <div className="bg-black py-12 text-white font-semibold ">
+    <div className="bg-black py-12 text-white font-semibold min-h-[180vh] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center mb-6">
-          <h2 className="text-base text-custom-gold font-semibold tracking-wide uppercase">What We Do</h2>
-          <p className="mt-2 text-3xl leading-8 font-semibold  tracking-tight text-custom-gold sm:text-4xl">
-            A better way to spend money
-          </p>
+        
+        <h2 className="text-3xl font-semibold text-center font-sans">OUR <span className='text-custom-gold'> PROGRAMMES </span></h2>
+
           <p className="mt-4 max-w-2xl text-xl text-gray-300 lg:mx-auto pb-10">
             Health is wealth, spend your money on becoming the best you!
           </p>
@@ -23,7 +22,7 @@ const SecondSection = () => {
         </div>
         <div className="w-full md:w-1/2 px-4">
             <div className="mb-6">
-                <h3 className="text-lg leading-6 font-medium text-custom-gold">Master Your Form and Technique</h3>
+                <h3 className="text-lg leading-6 font-medium text-custom-gold">1:1 Training</h3>
                 <p className="mt-2 text-base text-gray-300 ">
                     Enhance your fitness journey with expert guidance on form and technique. 
                     As your personal trainer, we offer personalized sessions tailored to improve your 
@@ -54,7 +53,7 @@ const SecondSection = () => {
 
             <div className="w-full md:w-1/2 px-4">
               <div className="mb-6">
-                <h3 className="text-lg leading-6 font-medium text-custom-gold">Unlock your full potential with tailored nutrition guidance</h3>
+                <h3 className="text-lg leading-6 font-medium text-custom-gold">1:1 Nutrition guidance</h3>
                 <p className="mt-2 text-base text-gray-300">
                 Unlock your full potential with tailored nutrition guidance! At NPT,
                 we're here not just to motivate your workouts, but to empower your eating habits. 
@@ -86,7 +85,7 @@ const SecondSection = () => {
             </div>
             <div className="w-full md:w-1/2 px-4">
               <div className="mb-6">
-                <h3 className="text-lg leading-6 font-medium text-custom-gold">Small Group Personal Training</h3>
+                <h3 className="text-lg leading-6 font-medium text-custom-gold">Group Personal Training</h3>
                 <p className="mt-2 text-base text-gray-300">
                   Our Small Group Personal Training is unlike anything you'll have experienced before. In micro training
                   groups of just 6:1, all your workouts are customised for you...
