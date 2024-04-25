@@ -18,7 +18,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`bg-black text-blue-500 fixed w-full z-10 font-sans ${isShrunk ? 'p-2' : 'p-4'}`}>
+    <nav className={`bg-black text-blue-500 fixed w-full z-10 font-sans ${isShrunk ? 'p-2' : 'p-4'} `}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-xl font-sans text-custom-gold">
           <a href="#home">

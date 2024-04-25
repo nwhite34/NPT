@@ -22,11 +22,12 @@ const Homepage = () => {
     <div className="text-white font-bold rounded flex flex-col">
       <Navbar />
       <div id="home" className="full-width"> {/* Ensure full width and correct sectioning */}
-        <Firstsection onButtonClick={scrollToFourthSection} />
+      
+        <Thirdsection onButtonClick={scrollToFourthSection}/>
       </div>
      < Sixthsection onButtonClick={scrollToFourthSection}/>
       <div className='bg-black w-full h-2'></div>
-      <Thirdsection onButtonClick={scrollToFourthSection}/>
+      <Firstsection onButtonClick={scrollToFourthSection} />
       <div id="programmes">
         <Secondsection />
       </div>
