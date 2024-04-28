@@ -31,12 +31,10 @@ const Homepage = () => {
       />
        <div ref={homeRef} id="home" className="full-width">
             <Eightsection onButtonClick={() => scrollToRef(contactRef)} />
-            <Sixthsection onButtonClick={() => scrollToRef(contactRef)} />
-       
-       
+           
     </div>
       
-
+    <Sixthsection onButtonClick={() => scrollToRef(contactRef)} />
       
       <div className='bg-black w-full h-2'></div>
     

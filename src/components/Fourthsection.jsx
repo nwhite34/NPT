@@ -65,7 +65,7 @@ const Fourthsection = forwardRef((props, ref) => {
             <h2 className="text-lg md:text-xl text-white mb-2 ">1-2-1 & SMALL GROUP</h2>
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-custom-gold">PERSONAL TRAINING WITH NPT</h1>
             <p className="text-sm md:text-base text-white">
-              The number one Personal Training Studio in NPT helping men and women to get in the best shape of their lives with our infamous 6 Week Transformation Challenge.
+              The number one Personal Training Studio in the Gold Coast. Helping men and women to get in the best shape of their lives with our infamous 6 Week Transformation Challenge.
             </p>
           </div>
           <div className=" bg-gray-900 rounded-lg p-4 md:p-6 text-custom-gold  ">

@@ -4,13 +4,13 @@ import logo from '../NPT4.png'; // Ensure the path to your logo is correct
 const Footer = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }) => {
     return (
         <div className="pt-16 bg-black text-custom-gold">
-            <div className="w-full border-custom-gold border-t lg:w-11/12 md:w-11/12 lg:mx-auto md:mx-auto bg-black">
+<div class="w-half border-custom-gold border-t lg:w-11/12 md:w-11/12 lg:mx-auto md:mx-auto mx-2 bg-black">
                 <div className="container mx-auto py-12">
                     <div className="xl:flex lg:flex md:flex pt-6">
                         <div className="w-11/12 xl:w-3/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0">
                             <div className="flex items-center mb-6 xl:mb-0 lg:mb-0">
                                 <img src={logo} alt="Logo" className="w-12 h-12" id="logo" />
-                                <p className="ml-3 font-bold text-xl font-semibold">Nicks Personal Training</p>
+                                <p className="ml-3  text-xl font-semibold">Nick's Personal Training</p>
                             </div>
                         </div>
                         <div className="w-11/12 xl:w-1/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0 pt-3 xl:flex xl:justify-end pl-3 sm:pl-0 text-custom-gold">

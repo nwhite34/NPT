@@ -3,8 +3,8 @@ import meJpg from '../me.jpg'; // Adjust the relative path if needed
 import vsJpg from '../second.jpg'; // Adjust the relative path if needed
 import sixJpg from '../nathan.jpg'; // Adjust the relative path if needed
 
-const Thirdsection = () => {
-  // Array of image URLs, including local images
+const Thirdsection = ({ onButtonClick }) => {
+    // Array of image URLs, including local images
   const images = [meJpg, sixJpg, vsJpg];
 
   // State to keep track of the current image index
@@ -19,7 +19,8 @@ const Thirdsection = () => {
     // Cleanup the interval on component unmount
     return () => clearInterval(timer);
   }, [images.length]);
-
+ // Function to handle button click
+ 
   return (
     <div className="relative h-screen flex flex-col justify-center items-center bg-black text-white font-bold">
       {/* Display the current image */}
@@ -37,6 +38,12 @@ const Thirdsection = () => {
         <p className="text-lg md:text-xl lg:text-2xl">
           Become better now. Transform your fitness journey with personalized guidance and community support.
         </p>
+        <button 
+    onClick={onButtonClick} 
+    className="bg-custom-gold text-black py-3 px-8 mt-20 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-white hover:text-black mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50"
+>
+    Try us out
+</button>
       </div>
 
       {/* Navigation dots */}

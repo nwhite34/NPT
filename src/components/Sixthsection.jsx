@@ -61,9 +61,12 @@ const SixthSection = ({ onButtonClick }) => {
             In just 42 days, you'll shift from feeling uncertain about your fitness future to celebrating the strong, confident habits you’ve developed and the noticeable changes in your physique and stamina.
           </p>
           <div className="mt-20">
-            <button onClick={onButtonClick} className="bg-white text-black py-3 px-8 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-custom-gold hover:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50">
-              Try us out
-            </button>
+          <button 
+    onClick={onButtonClick} 
+    className="bg-custom-gold text-black py-3 px-8 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-white hover:text-black mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50"
+>
+    Try us out
+</button>
           </div>
         </div>
       </div>

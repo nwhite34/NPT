@@ -65,6 +65,7 @@ const FifthSection = () => {
   const initialDisplayCount = 3;
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
   const [isInView, setIsInView] = useState(false);
+  const [containerHeight, setContainerHeight] = useState('120vh'); // Initial height set to 120vh
   const sectionRef = useRef(null);
 
   const trail = useTrail(displayCount, {
@@ -97,11 +98,13 @@ const FifthSection = () => {
   }, []);
 
   const handleClick = () => {
-    setDisplayCount(prevCount => Math.min(prevCount + 3, testimonials.length));
+    const newDisplayCount = Math.min(displayCount + 3, testimonials.length);
+    setDisplayCount(newDisplayCount);
+    setContainerHeight(newDisplayCount > initialDisplayCount ? 'auto' : '120vh'); // Adjust height dynamically
   };
 
   return (
-    <div ref={sectionRef} className="bg-black text-white p-8 min-h-[140vh]">
+    <div ref={sectionRef} className="bg-black text-white p-8" style={{ minHeight: containerHeight }}>
       <div className="max-w-7xl mx-auto">
         <animated.h2 style={springProps} className="text-3xl font-semibold text-center font-sans">
           THE RESULTS YOU CAN <span className='text-custom-gold'>EXPECT</span>
@@ -125,7 +128,7 @@ const FifthSection = () => {
           <div className="text-center mt-8">
             <button
               onClick={handleClick}
-              className="bg-custom-gold text-black px-5 py-3 rounded-md hover:bg-opacity-90 transition duration-300"
+              className="bg-custom-gold text-black px-8 py-3 rounded-full hover:bg-white hover:text-black transition duration-300 font-bold text-xl md:text-2xl shadow-xl hover:shadow-none focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50"
             >
               CLICK HERE TO SEE EVEN MORE RESULTS
             </button>
