@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSpring, animated } from 'react-spring';
 import './Navbar.css';
 import logo from '../NPT4.png';
 
@@ -17,12 +18,17 @@ const Navbar = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }
     };
   }, []);
 
+  const navbarStyle = useSpring({
+    paddingTop: isShrunk ? '1rem' : '2rem', // Adjust top padding
+    paddingBottom: isShrunk ? '2rem' : '2rem', // Adjust bottom padding only when shrunk
+  });
+
   return (
-    <nav className={`bg-black text-blue-500 fixed w-full z-10 font-sans ${isShrunk ? 'p-2' : 'p-4'} `}>
+    <animated.nav style={navbarStyle} className={`bg-black text-blue-500 fixed w-full z-10 font-sans ${isShrunk ? 'navbar-shrunk' : 'navbar-expanded'}`}>
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-xl font-semibold text-custom-gold ">
+        <div className="text-xl font-semibold text-custom-gold">
           <button onClick={onHomeClick}>
-            <img src={logo} alt="Logo" className={`cursor-pointer ${isShrunk ? 'h-6 md:h-8' : 'h-8 md:h-10'} `} /> NPT
+            <img src={logo} alt="Logo" className={`cursor-pointer ${isShrunk ? 'h-6 md:h-8' : 'h-8 md:h-10'}`} /> NPT
           </button>
         </div>
         <div className="md:hidden">
@@ -54,7 +60,7 @@ const Navbar = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }
           </ul>
         </div>
       )}
-    </nav>
+    </animated.nav>
   );
 };
 

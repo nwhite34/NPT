@@ -2,11 +2,12 @@ import React, { useRef } from 'react';
 import Navbar from './Navbar';
 import Firstsection from './Firstsection';
 import Secondsection from './Secondsection';
-import Thirdsection from './Thirdsection';
-import Fourthsection from './Fourthsection';
+// import Thirdsection from './Thirdsection';
+// import Fourthsection from './Fourthsection';
 import Fifthsection from './Fifthsection';
 import Sixthsection from './Sixthsection';
 import Seventhsection from './Seventhsection';
+import Eightsection from './Eightsection';
 import Footer from './Footer';
 
 const Homepage = () => {
@@ -20,6 +21,7 @@ const Homepage = () => {
   };
 
   return (
+    <div className="bg-black">
     <div className="text-white font-bold rounded flex flex-col">
       <Navbar
         onHomeClick={() => scrollToRef(homeRef)}
@@ -27,10 +29,13 @@ const Homepage = () => {
         onAboutClick={() => scrollToRef(aboutRef)}
         onContactClick={() => scrollToRef(contactRef)}
       />
-        <div ref={homeRef} id="home" className="full-width">
-        <Firstsection />
+       <div ref={homeRef} id="home" className="full-width">
+            <Eightsection onButtonClick={() => scrollToRef(contactRef)} />
+            <Sixthsection onButtonClick={() => scrollToRef(contactRef)} />
+       
+       
     </div>
-        <Sixthsection onButtonClick={() => scrollToRef(contactRef)} />
+      
 
       
       <div className='bg-black w-full h-2'></div>
@@ -42,15 +47,15 @@ const Homepage = () => {
 
       <div className='bg-black w-full h-2'></div>
       <Fifthsection />
-      <div ref={aboutRef} id="about">
-        <Seventhsection />
-      </div>
+     
       <div className='bg-black w-full h-20'></div>
-      <Thirdsection onButtonClick={() => scrollToRef(contactRef)} />
-      <div className='bg-black w-full h-2'></div>
+    
       
       <div ref={contactRef} id="contact">
-        <Fourthsection />
+      <Firstsection />
+      </div>
+      <div ref={aboutRef} id="about">
+        <Seventhsection onButtonClick={() => scrollToRef(contactRef)} />
       </div>
       <Footer
         onHomeClick={() => scrollToRef(homeRef)}
@@ -58,6 +63,7 @@ const Homepage = () => {
         onAboutClick={() => scrollToRef(aboutRef)}
         onContactClick={() => scrollToRef(contactRef)}
       />
+    </div>
     </div>
   );
 };

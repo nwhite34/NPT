@@ -1,8 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSpring, animated } from 'react-spring';
 
 const SixthSection = ({ onButtonClick }) => {
+  // State to manage whether the animation has been triggered
+  const [triggerAnimation, setTriggerAnimation] = useState(false);
+
+  // Animation configuration using react-spring
+  const animationProps = useSpring({
+    to: {
+      opacity: triggerAnimation ? 1 : 0,
+      transform: triggerAnimation ? 'translateY(0)' : 'translateY(50px)',
+    },
+    from: {
+      opacity: 0,
+      transform: 'translateY(50px)',
+    },
+    config: { duration: 500 }
+  });
+
+  // Add event listener to window to trigger animation on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get the window scroll position
+      const position = window.scrollY;
+      const height = window.innerHeight;
+      // Trigger animation when the user scrolls more than half the window height
+      if (position > height * 0.5 && !triggerAnimation) {
+        setTriggerAnimation(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [triggerAnimation]);  // Only re-run the effect if triggerAnimation changes
+
   return (
-    <div className="bg-black py-12 min-h-[100vh]">
+    <animated.div style={animationProps} className="bg-black py-12 min-h-[75vh] mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans">
         <div className="text-center mt-20">
           <h2 className="text-3xl sm:text-4xl uppercase mb-20 text-white font-semibold">
@@ -24,14 +61,13 @@ const SixthSection = ({ onButtonClick }) => {
             In just 42 days, you'll shift from feeling uncertain about your fitness future to celebrating the strong, confident habits you’ve developed and the noticeable changes in your physique and stamina.
           </p>
           <div className="mt-20">
-            <button onClick={onButtonClick}         className="bg-white text-black py-3 px-8 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-custom-gold hover:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50">
-
+            <button onClick={onButtonClick} className="bg-white text-black py-3 px-8 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-custom-gold hover:text-white mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50">
               Try us out
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useTrail, useSpring, animated } from 'react-spring';
 import fit1 from '../fit1.png';
 import fit2 from '../fit2.png';
 import fit3 from '../fit3.png';
@@ -6,7 +7,6 @@ import fit4 from '../fit4.png';
 import fit5 from '../fit5.png';
 import fit6 from '../fit6.png';
 
-// Array of testimonials
 const testimonials = [
   {
     image: fit1,
@@ -47,13 +47,13 @@ const testimonials = [
 ];
 
 const StarRating = ({ rating }) => (
-  <div className="flex justify-center mt-2 mb-2 space-x-1 overflow-visible "> {/* Ensuring overflow is visible and adjusting margins */}
+  <div className="flex justify-center mt-2 mb-2 space-x-1 overflow-visible ">
     {Array.from({ length: 5 }, (_, index) => (
       <svg
         key={index}
         className={`h-8 w-8 ${index < rating ? 'text-custom-gold' : 'text-gray-400'}`}
         fill="currentColor"
-        viewBox="0 0 24 24" // Adjusted view box to ensure the stars are fully contained
+        viewBox="0 0 24 24"
       >
         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24h-7.19L12 2l-2.81 7.24H2l5.46 4.73L5.82 21z" />
       </svg>
@@ -64,28 +64,61 @@ const StarRating = ({ rating }) => (
 const FifthSection = () => {
   const initialDisplayCount = 3;
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+
+  const trail = useTrail(displayCount, {
+    opacity: isInView ? 1 : 0,
+    transform: isInView ? 'translate3d(0, 0px, 0)' : 'translate3d(0, 40px, 0)',
+    from: { opacity: 0, transform: 'translate3d(0, 40px, 0)' }
+  });
+
+  const springProps = useSpring({
+    opacity: isInView ? 1 : 0,
+    transform: isInView ? 'translate3d(0, 0px, 0)' : 'translate3d(0, 40px, 0)',
+    from: { opacity: 0, transform: 'translate3d(0, 40px, 0)' }
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const { top } = sectionRef.current.getBoundingClientRect();
+        const triggerPoint = window.innerHeight / 2;
+        if (top < triggerPoint) {
+          setIsInView(true);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleClick = () => {
     setDisplayCount(prevCount => Math.min(prevCount + 3, testimonials.length));
   };
 
   return (
-    <div className="bg-black text-white p-8 min-h-[140vh]">
+    <div ref={sectionRef} className="bg-black text-white p-8 min-h-[140vh]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold text-center font-sans">THE RESULTS YOU CAN <span className='text-custom-gold'> EXPECT </span></h2>
-        <p className="mt-4 text-center">
+        <animated.h2 style={springProps} className="text-3xl font-semibold text-center font-sans">
+          THE RESULTS YOU CAN <span className='text-custom-gold'>EXPECT</span>
+        </animated.h2>
+        <animated.p style={springProps} className="mt-4 text-center">
           NPT would be nothing without the men and women that have put their trust in us over the last 10 years...
-        </p>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Increased gap for larger images */}
-          {testimonials.slice(0, displayCount).map((testimonial, index) => (
-            <div key={index} className="flex flex-col items-center p-6 bg-gray-900 shadow-lg rounded-lg"> {/* Adjusted padding and shadow for more emphasis */}
-              <img className="w-64 h-64 object-cover border-4 border-custom-gold rounded-lg " src={testimonial.image} alt="client" /> {/* Further increased image size */}
-              <StarRating rating={testimonial.rating} />
+        </animated.p>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {trail.map((props, index) => (
+            <animated.div key={index} style={props} className="flex flex-col items-center p-6 bg-gray-900 shadow-lg rounded-lg">
+              <img className="w-64 h-64 object-cover border-4 border-custom-gold rounded-lg" src={testimonials[index].image} alt="client" />
+              <StarRating rating={testimonials[index].rating} />
               <blockquote className="mt-4 text-center text-sm italic">
-                "{testimonial.text}"
-                <cite className="block mt-2 text-xs font-medium">- {testimonial.name}</cite>
+                "{testimonials[index].text}"
+                <cite className="block mt-2 text-xs font-medium">- {testimonials[index].name}</cite>
               </blockquote>
-            </div>
+            </animated.div>
           ))}
         </div>
         {displayCount < testimonials.length && (

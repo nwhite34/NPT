@@ -45,13 +45,13 @@ const Footer = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }
                         <div className="w-11/12 xl:w-2/6 mx-auto lg:mx-0 xl:mx-0 mb-6 lg:mb-0 xl:mb-0">
                             <ul className="xl:flex lg:flex md:flex sm:flex justify-between">
                                 <li className="text-gray-800 hover:text-gray-900 text-base mb-4 sm:mb-0">
-                                    <button onClick={onHomeClick} className="link-button">Privacy Policy</button>
+                                    <button onClick={onHomeClick} className="link-button"></button>
                                 </li>
                                 <li className="text-gray-800 hover:text-gray-900 text-base mb-4 sm:mb-0">
-                                    <button onClick={onProgrammesClick} className="link-button">Terms of Use</button>
+                                    <button onClick={onProgrammesClick} className="link-button"></button>
                                 </li>
                                 <li className="text-gray-800 hover:text-gray-900 text-base mb-4 sm:mb-0">
-                                    <button onClick={onAboutClick} className="link-button">Sitemap</button>
+                                    <button onClick={onAboutClick} className="link-button"></button>
                                 </li>
                             </ul>
                         </div>
