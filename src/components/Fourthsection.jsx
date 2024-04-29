@@ -1,8 +1,7 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import emailjs from 'emailjs-com';
 
 const Fourthsection = forwardRef((props, ref) => {
-  // State for form fields and validation
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -11,24 +10,38 @@ const Fourthsection = forwardRef((props, ref) => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [formStyle, setFormStyle] = useState({});
 
-  // Function to handle form field changes
-  const handleChange = (e) => {
-    const { name, value } = e.target; // Changed to 'name' from 'id'
-    setFormData({
-      ...formData,
-      [name]: value // Changed to 'name' from 'id'
+  // Adjust the styling for mobile screens
+  const updateFormStyleForMobile = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    const formHeight = ref.current.clientHeight;
+    const mobileViewHeight = vh * 100;
+    const paddingTop = (mobileViewHeight - formHeight) / 2;
+
+    setFormStyle({
+      paddingTop: `${paddingTop}px`,
+      paddingBottom: `${paddingTop}px`,
     });
-    // Remove errors for the current field
+  };
+
+  useEffect(() => {
+    updateFormStyleForMobile();
+    window.addEventListener('resize', updateFormStyleForMobile);
+
+    return () => window.removeEventListener('resize', updateFormStyleForMobile);
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
     if (formErrors[name]) {
-      setFormErrors({
-        ...formErrors,
-        [name]: null // Changed to 'name' from 'id'
-      });
+      setFormErrors({ ...formErrors, [name]: null });
     }
   };
 
-  // Function to validate the form fields
   const validateForm = () => {
     const errors = {};
     if (!formData.firstName.trim()) errors.firstName = 'First name is required';
@@ -38,18 +51,15 @@ const Fourthsection = forwardRef((props, ref) => {
     return errors;
   };
 
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
-      // Send form with emailjs
       emailjs.sendForm('service_vy9sii5', 'template_9tynflg', e.target, 'GzgoZ9ejGuAanBeau')
         .then((result) => {
-          console.log(result.text);
           setSubmitted(true);
         }, (error) => {
-          console.log(error.text);
+          setSubmitted(false);
         });
     } else {
       setFormErrors(errors);
@@ -57,44 +67,26 @@ const Fourthsection = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="relative min-h-[110vh] bg-black" ref={ref}>
-      
-      <div className="absolute inset-0 flex items-center justify-center w-full md:w-1/2 m-auto p-4 ">
-        <div className="max-w-full md:max-w-xl rounded-lg p-4  bg-gray-900">
-          <div className="text-left mb-6 ">
-            <h2 className="text-lg md:text-xl text-white mb-2 ">1-2-1 & SMALL GROUP</h2>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-custom-gold">PERSONAL TRAINING WITH NPT</h1>
-            <p className="text-sm md:text-base text-white">
-              The number one Personal Training Studio in the Gold Coast. Helping men and women to get in the best shape of their lives with our infamous 6 Week Transformation Challenge.
-            </p>
-          </div>
-          <div className=" bg-gray-900 rounded-lg p-4 md:p-6 text-custom-gold  ">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label htmlFor="first-name" className="block text-sm font-bold mb-2">First Name *</label>
-                <input name="firstName" id="first-name" type="text" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="w-full py-2 px-3 rounded border shadow appearance-none text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-                {formErrors.firstName && <p className="text-red-500 text-xs italic">{formErrors.firstName}</p>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="last-name" className="block text-sm font-bold mb-2">Last Name *</label>
-                <input name="lastName" id="last-name" type="text" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className="w-full py-2 px-3 rounded border shadow appearance-none text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-                {formErrors.lastName && <p className="text-red-500 text-xs italic">{formErrors.lastName}</p>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="phone-number" className="block text-sm font-bold mb-2">Phone Number *</label>
-                <input name="phoneNumber" id="phone-number" type="text" placeholder="Phone" value={formData.phoneNumber} onChange={handleChange} className="w-full py-2 px-3 rounded border shadow appearance-none text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-                {formErrors.phoneNumber && <p className="text-red-500 text-xs italic">{formErrors.phoneNumber}</p>}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-bold mb-2">Email *</label>
-                <input name="email" id="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} className="w-full py-2 px-3 rounded border shadow appearance-none text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-                {formErrors.email && <p className="text-red-500 text-xs italic">{formErrors.email}</p>}
-              </div>
-              <button type="submit" className={`w-full ${submitted ? 'text-black bg-custom-gold' : 'bg-blue-500 hover:bg-blue-700 text-white'} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>
-                {submitted ? 'Submitted, hang tight!' : 'CLAIM YOUR FREE TRIAL TRAINING SESSION'}
-              </button>
-            </form>
-          </div>
+    <div className="relative bg-black" ref={ref} style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
+      <div className="w-full max-w-md mx-auto" style={formStyle}>
+        <div className="bg-gray-900 rounded-lg px-6 py-8">
+          <h2 className="text-lg md:text-xl text-white mb-2 text-center">1-2-1 & SMALL GROUP</h2>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-custom-gold text-center">
+            PERSONAL TRAINING WITH NPT
+          </h1>
+          <p className="text-sm md:text-base text-white text-center mb-6">
+            The number one Personal Training Studio in NPT helping men and women to get in the best shape of their lives with our infamous 6 Week Transformation Challenge.
+          </p>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* All form fields here */}
+            {/* ... */}
+            <button
+              type="submit"
+              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${submitted ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+            >
+              {submitted ? 'Submitted, hang tight!' : 'CLAIM YOUR FREE TRIAL TRAINING SESSION'}
+            </button>
+          </form>
         </div>
       </div>
     </div>

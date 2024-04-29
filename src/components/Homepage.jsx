@@ -16,21 +16,47 @@ const Homepage = () => {
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
 
-  const scrollToRef = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToRef = (ref, context) => {
+    if (ref.current) {
+      const elementRect = ref.current.getBoundingClientRect();
+      const absoluteElementTop = elementRect.top + window.pageYOffset;
+      
+      let scrollToPosition;
+  
+      if (context === 'contact' && window.innerWidth < 768) {
+        // For the contact form on mobile, scroll to the center of the screen
+        const middlePoint = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
+        scrollToPosition = middlePoint;
+      } else if (context === 'programmes') {
+        // For programmes, simply scroll to the element's top minus the header's height
+        const headerOffset = 70; // Replace with the actual height of your header
+        scrollToPosition = absoluteElementTop - headerOffset;
+      } else {
+        // Default scroll behavior for other sections
+        scrollToPosition = absoluteElementTop;
+      }
+  
+      window.scrollTo({
+        top: scrollToPosition,
+        behavior: 'smooth'
+      });
+    }
   };
+  
 
+  
   return (
     <div className="bg-black">
     <div className="text-white font-bold rounded flex flex-col">
-      <Navbar
-        onHomeClick={() => scrollToRef(homeRef)}
-        onProgrammesClick={() => scrollToRef(programmesRef)}
-        onAboutClick={() => scrollToRef(aboutRef)}
-        onContactClick={() => scrollToRef(contactRef)}
-      />
+    <Navbar
+  onHomeClick={() => scrollToRef(homeRef, 'home')}
+  onProgrammesClick={() => scrollToRef(programmesRef, 'programmes')}
+  onAboutClick={() => scrollToRef(aboutRef, 'about')}
+  onContactClick={() => scrollToRef(contactRef, 'contact')}
+/>
+
        <div ref={homeRef} id="home" className="full-width">
-            <Eightsection onButtonClick={() => scrollToRef(contactRef)} />
+            <Eightsection onButtonClick={() => scrollToRef(contactRef, 'contact')} />
            
     </div>
       

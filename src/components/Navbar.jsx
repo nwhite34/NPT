@@ -42,8 +42,9 @@ const Navbar = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }
           <div className="hidden md:flex space-x-4">
             <button onClick={onHomeClick} className="underline-animation text-custom-gold hover:text-white">HOME</button>
             <button onClick={onProgrammesClick} className="underline-animation text-custom-gold hover:text-white">PROGRAMMES</button>
-            <button onClick={onAboutClick} className="underline-animation text-custom-gold hover:text-white">ABOUT</button>
             <button onClick={onContactClick} className="underline-animation text-custom-gold hover:text-white">CONTACT</button>
+            <button onClick={onAboutClick} className="underline-animation text-custom-gold hover:text-white">ABOUT</button>
+          
           </div>
         </div>
       </div>
@@ -56,9 +57,11 @@ const Navbar = ({ onHomeClick, onProgrammesClick, onAboutClick, onContactClick }
           </div>
           <ul className="space-y-4 p-4">
             <li><button onClick={onHomeClick} className="underline-animation text-custom-gold hover:text-white">HOME</button></li>
-            <li><button onClick={onAboutClick} className="underline-animation text-custom-gold hover:text-white">ABOUT</button></li>
             <li><button onClick={onProgrammesClick} className="underline-animation text-custom-gold hover:text-white">PROGRAMMES</button></li>
             <li><button onClick={onContactClick} className="underline-animation text-custom-gold hover:text-white">CONTACT</button></li>
+            <li><button onClick={onAboutClick} className="underline-animation text-custom-gold hover:text-white">ABOUT</button></li>
+            
+           
           </ul>
         </div>
       )}
