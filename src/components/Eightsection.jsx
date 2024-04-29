@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated, config } from 'react-spring';
-import { useSwipeable } from 'react-swipeable'; // Import useSwipeable from react-swipeable
+import { useSwipeable } from 'react-swipeable';
 import meJpg from '../me.jpg';
 import vsJpg from '../second.jpg';
 import sixJpg from '../nathan.jpg';
 
 const Thirdsection = ({ onButtonClick }) => {
-  const images = [meJpg, sixJpg, vsJpg];
+  const images = [meJpg, vsJpg, sixJpg];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loaded, setLoaded] = useState(false); // State to track initial load
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -17,22 +18,25 @@ const Thirdsection = ({ onButtonClick }) => {
     return () => clearInterval(timer);
   }, [images.length]);
 
+  // Only trigger animations on initial load
   const textAnimationProps = useSpring({
     from: { opacity: 0, transform: 'translateY(50px)' },
     to: { opacity: 1, transform: 'translateY(0px)' },
     config: config.slow,
+    reset: !loaded,
+    onRest: () => setLoaded(true)  // Set loaded to true after initial animation completes
   });
 
   const buttonAnimationProps = useSpring({
     from: { opacity: 0, transform: 'translateY(30px)' },
     to: { opacity: 1, transform: 'translateY(0px)' },
     config: config.default,
+    reset: !loaded,
   });
 
   const isIPhone12 = window.innerHeight === 844 && window.innerWidth === 390;
   const divHeight = isIPhone12 ? '120vh' : '100vh';
 
-  // Define swipe handlers
   const handleSwipeLeft = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -41,7 +45,6 @@ const Thirdsection = ({ onButtonClick }) => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  // Setup swipeable handlers
   const swipeHandlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
