@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Project Overview
+
+This project was designed as a comprehensive learning experience to delve into React development, utilize various libraries, and implement a responsive design using Tailwind CSS. The key focus was to build a modular and scalable web application with distinct components and integrate animations and interactive elements effectively.
+
+## What I Learned
+
+### React and Component Architecture
+- **Modular Design**: Learned to split code into separate components to make the codebase more manageable and reusable.
+- **Component Integration**: Mastered the art of linking components together to form a coherent application architecture, specifically linking multiple components to a central homepage component.
+
+### Libraries and Tools
+- **React Spring**: Utilized React Spring for implementing smooth and natural animations, enhancing the user interface and user experience on web platforms.
+- **Mobile Slider Library**: Gained hands-on experience with a library designed for mobile sliders (name forgotten) to create touch-responsive, swipeable components.
+- **Tailwind CSS**: Learned to use Tailwind CSS for styling, focusing on its utility-first approach and the importance of mobile-first design.
+  - **Responsive Design**: Emphasized designing for mobile devices first before scaling up to desktop views.
+  - **Tailwind Configuration**: Learned how to customize Tailwind's configuration to include custom colors and other specific utilities.
+
+### Deployment and Production
+- **Netlify Deployment**: Explored deploying websites through Netlify, taking advantage of its seamless integration with GitHub and built-in SSL certification features.
+- **Development vs. Production Commands**:
+  - `npm start`: Used for running the application locally during the development phase to test features and changes in real-time.
+  - `npm run build`: Learned that this command is used to create a production build of the application, optimizing performance and preparing the app for deployment.
+
+### Additional Tools
+- **TUK**: Utilized https://app.tuk.dev/ to quickly find and implement common UI sections like footers and headers, speeding up the design process.
+
+## Conclusion
+
+This project not only enhanced my technical skills in using React and Tailwind CSS but also deepened my understanding of web application architecture and responsive design principles. The integration of animations and handling mobile responsiveness were key achievements that improved the overall functionality and aesthetics of the application.
+
+
