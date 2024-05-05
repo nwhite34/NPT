@@ -42,7 +42,7 @@ const MissionSection = ({ onButtonClick }) => {
     onClick={onButtonClick} 
     className="mt-20 bg-custom-gold text-black py-3 px-8 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-white hover:text-black mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50"
 >
-    Book your free trial now
+   BOOK YOUR FREE TRIAL NOW
 </button>
         </animated.div>
       </div>

@@ -79,7 +79,7 @@ const Thirdsection = ({ onButtonClick }) => {
           style={buttonAnimationProps}
           className="bg-custom-gold text-black py-3 px-8 mt-20 rounded-full font-bold transition duration-300 ease-in-out cursor-pointer text-xl md:text-2xl shadow-xl hover:bg-white hover:text-black mb-4 focus:outline-none focus:ring-2 focus:ring-custom-gold focus:ring-opacity-50"
         >
-          Try us out
+          TRY US OUT
         </animated.button>
       </div>
       <div className="absolute bottom-5 flex">
